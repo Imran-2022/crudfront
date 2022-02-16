@@ -47,7 +47,7 @@ const ManageData = () => {
                 <thead>
                     <tr>
                         <th>#no</th>
-                        <th>id</th>
+                        <th className="hideth">id</th>
                         <th>name</th>
                         <th>update</th>
                         <th>delete</th>
@@ -61,7 +61,7 @@ const ManageData = () => {
                             <tbody key={_id}>
                                 <tr>
                                     <td>{i + 1}</td>
-                                    <td>{_id}</td>
+                                    <td className="hideth">{_id}</td>
                                     <td>{name}</td>
                                     <td className="btnmanage"><Link to={`/data/update/${_id}`}>update</Link></td>
                                     <td className="btnmanage" onClick={() => handleDelete(_id)}>delete</td>
