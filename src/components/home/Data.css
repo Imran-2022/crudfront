@@ -27,4 +27,7 @@
     .dataHome{
         grid-template-columns: repeat(2,1fr);
     }
+    .div2 img{
+        height: 160px;
+    }
   }
