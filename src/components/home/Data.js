@@ -5,7 +5,7 @@ const Data = () => {
     const [data, setData] = useState([])
     useEffect(() => {
         async function fetchData() {
-            const res = await fetch("http://localhost:8080/data");
+            const res = await fetch("https://mern-crud-operation.herokuapp.com/data");
             const record = await res.json();
             setData(record.reverse())
         }
@@ -21,11 +21,11 @@ const Data = () => {
                         // console.log(index,data)
                         const { _id, img, name } = data
                         return (
-                                <div className="div2" key={_id}>
-                                    <img src={img} alt="" />
-                                    <p>{name}</p>
-                                    <Link to={`/dataDetails/${_id}`}><p>details</p></Link>
-                                </div>
+                            <div className="div2" key={_id}>
+                                <img src={img} alt="" />
+                                <p>{name}</p>
+                                <Link to={`/dataDetails/${_id}`}><p>details</p></Link>
+                            </div>
                         )
                     })
                 }

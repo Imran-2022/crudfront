@@ -7,7 +7,7 @@ const DataDetails = () => {
     // console.log(id)
     useEffect(() => {
         async function fetchData() {
-            const res = await fetch(`http://localhost:8080/data/${id}`);
+            const res = await fetch(`https://mern-crud-operation.herokuapp.com/data/${id}`);
             const record = await res.json();
             setDataD(record)
         }
@@ -17,7 +17,7 @@ const DataDetails = () => {
     // console.log(_id, img, name, descriptions)
     return (
         <div className="div22" key={_id}>
-           
+
             <img src={img} alt="" />
             <p>{name}</p>
             <p>{descriptions}</p>

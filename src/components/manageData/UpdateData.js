@@ -7,7 +7,7 @@ const UpdateData = () => {
     console.log(dataID)
     useEffect(() => {
         async function fetchData() {
-            const res = await fetch(`http://localhost:8080/data/${dataID}`);
+            const res = await fetch(`https://mern-crud-operation.herokuapp.com/data/${dataID}`);
             const record = await res.json();
             setUpdate(record)
         }
@@ -17,9 +17,9 @@ const UpdateData = () => {
     // console.log(_id, img, name, descriptions)
 
     // handle update changes here  -
-    const handleUpdate =(e) => {
-        const url =`http://localhost:8080/data/${dataID}`;
-        fetch(url,{
+    const handleUpdate = (e) => {
+        const url = `https://mern-crud-operation.herokuapp.com/data/${dataID}`;
+        fetch(url, {
             method: 'PUT',
             headers: {
                 'Accept': 'application/json',
@@ -27,35 +27,35 @@ const UpdateData = () => {
             },
             body: JSON.stringify(update),
         })
-        .then(response => response.json())
-        .then(result=>{
-            if(result.modifiedCount>0){
-                alert('Updated')
-                setUpdate({})
-            }
-        })
+            .then(response => response.json())
+            .then(result => {
+                if (result.modifiedCount > 0) {
+                    alert('Updated')
+                    setUpdate({})
+                }
+            })
 
         e.preventDefault()
     }
 
     // console.log(update)
-    const handleNameChange=(e) => {
-        const updatedName=e.target.value;
-        const updated={name:updatedName,img:update.img,descriptions:update.descriptions}
+    const handleNameChange = (e) => {
+        const updatedName = e.target.value;
+        const updated = { name: updatedName, img: update.img, descriptions: update.descriptions }
         setUpdate(updated)
         // console.log(updatedUser)
         // console.log(e.target.value)
     }
 
-    const handleImagesChange =(e) => {
-        const updatedImage=e.target.value;
-        const updated={name:update.name,img:updatedImage,descriptions:update.descriptions}
+    const handleImagesChange = (e) => {
+        const updatedImage = e.target.value;
+        const updated = { name: update.name, img: updatedImage, descriptions: update.descriptions }
         setUpdate(updated)
     }
 
-    const handleDescriptionsChange=(e) => {
-        const updatedDescriptions=e.target.value;
-        const updated={name:update.name,img:update.img,descriptions:updatedDescriptions}
+    const handleDescriptionsChange = (e) => {
+        const updatedDescriptions = e.target.value;
+        const updated = { name: update.name, img: update.img, descriptions: updatedDescriptions }
         setUpdate(updated)
     }
 
@@ -63,7 +63,7 @@ const UpdateData = () => {
         <div>
             <p>update a data</p>
             <div className="update">
-               
+
                 <form onSubmit={handleUpdate}>
                     <input type="text" onChange={handleNameChange} value={name || ""} />
                     <input type="text" onChange={handleDescriptionsChange} value={descriptions || ""} />
