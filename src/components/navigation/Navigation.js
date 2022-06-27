@@ -1,14 +1,14 @@
 import React from 'react';
 import "./Navigation.css";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 const Navigation = () => {
     return (
         <div>
             <p>React Crud Operations </p>
-            <nav>
-                <Link to="/">Home</Link> |{" "}
-                <Link to="addData">AddData</Link> |{" "}
-                <Link to="manageData">ManageData</Link>
+            <nav className='navigation'>
+                <NavLink className="navlink" to="/">Home</NavLink> →{" "}
+                <NavLink className="navlink" to="addData">AddData</NavLink> →{" "}
+                <NavLink className="navlink" to="manageData">ManageData</NavLink>
             </nav>
         </div>
     );
