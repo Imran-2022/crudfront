@@ -15,7 +15,8 @@ const Data = () => {
     return (
         <div>
             <p>total number of data added : {data.length}</p>
-            <div className="dataHome">
+            {
+                data.length ? <div className="dataHome">
                 {
                     data.map((data, index) => {
                         // console.log(index,data)
@@ -29,7 +30,10 @@ const Data = () => {
                         )
                     })
                 }
+            </div>:<div className="dataHome" >
+                <p>loading data from backend , wait ...........</p>
             </div>
+            }
 
         </div>
     );

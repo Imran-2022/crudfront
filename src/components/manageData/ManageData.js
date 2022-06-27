@@ -44,7 +44,7 @@ const ManageData = () => {
                 </thead>
 
                 {
-                    manageData.map((data, i) => {
+                  manageData.length?  manageData.map((data, i) => {
                         const { _id, img, name } = data
                         return (
                             <tbody key={_id}>
@@ -58,7 +58,9 @@ const ManageData = () => {
 
                             </tbody>
                         )
-                    })
+                    }):<div >
+                    <p>loading data from backend , wait ...........</p>
+                </div>
                     // }).reverse()
                 }
             </table>
