@@ -1,30 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const ManageData = () => {
     const [manageData, setManageData] = useState([])
-    // useEffect(() => {
-    //     async function fetchData() {
-    //         const res = await fetch("https://mern-crud-mvc.herokuapp.com/api/data");
-    //         const record = await res.json();
-    //         setManageData(record)
-    //     }
-    //     fetchData();
-    // }, [])
-
     useEffect(() => {
         const url = "https://mern-crud-mvc.herokuapp.com/api/data"
         fetch(url)
             .then(res => res.json())
             .then(data => {
-                // setManageData(data.reverse())
                 setManageData(data.reverse())
-                // setUser(data)
             })
     }, [])
 
     const handleDelete = (id) => {
-        // const proced= window.confirm("are you sure, you want to delete ?");
 
         if (true) {
             fetch(`https://mern-crud-mvc.herokuapp.com/api/data/${id}`, {
@@ -33,7 +22,7 @@ const ManageData = () => {
                 .then(res => res.json())// or res.text()) 
                 .then(res => {
                     if (res.deletedCount === 1) {
-                        alert(`User ${id} deleted successfully`)
+                        toast(` deleted successfully`)
                         const newUser = manageData.filter(ab => ab._id != id);
                         setManageData(newUser)
                     }
@@ -66,12 +55,24 @@ const ManageData = () => {
                                     <td className="btnmanage"><Link to={`/data/update/${_id}`}>update</Link></td>
                                     <td className="btnmanage" onClick={() => handleDelete(_id)}>delete</td>
                                 </tr>
+
                             </tbody>
                         )
                     })
                     // }).reverse()
                 }
             </table>
+            <ToastContainer
+                position="top-right"
+                autoClose={1000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
         </div>
     );
 };

@@ -13,12 +13,13 @@ const DataDetails = () => {
         }
         fetchData();
     }, [])
+    
     const { _id, img, name, descriptions } = dataD
     // console.log(_id, img, name, descriptions)
     return (
         <div className="div22" key={_id}>
 
-            <img src={img} alt="" />
+            <img  style={{maxHeight:"450px",width:"100%"}} src={img} alt="" />
             <p>{name}</p>
             <p>{descriptions}</p>
         </div>

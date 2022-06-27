@@ -2,16 +2,22 @@ import React from 'react';
 import axios from 'axios'
 import { useForm } from "react-hook-form";
 import "./ManageData.css"
+import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const AddData = () => {
-    const { register, handleSubmit, reset } = useForm();
+    const navigate = useNavigate();
+    const { register, handleSubmit } = useForm();
 
     const onSubmit = data => {
         console.log(data)
         axios.post('https://mern-crud-mvc.herokuapp.com/api/data', data)
             .then(res => {
                 if (res.data) {
-                    alert("data added successfully !!!");
-                    reset()
+                    toast("data added successfully !!!");
+                    setTimeout(() => {
+                        navigate("/", { replace: true });
+                    }, 1500);
                 }
             })
     };
@@ -25,6 +31,17 @@ const AddData = () => {
                     <input  {...register("descriptions")} placeholder="descriptions" />
                     <input {...register("img")} placeholder="img" />
                     <input type="submit" value="add Data" />
+                    <ToastContainer
+                        position="top-right"
+                        autoClose={500}
+                        hideProgressBar={false}
+                        newestOnTop={false}
+                        closeOnClick
+                        rtl={false}
+                        pauseOnFocusLoss
+                        draggable
+                        pauseOnHover
+                    />
                 </form>
             </div>
         </div>

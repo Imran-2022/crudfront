@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-
+import { useNavigate, useParams } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const UpdateData = () => {
+    const navigate = useNavigate();
     const [update, setUpdate] = useState({ name: "", img: "", descriptions: "" });
     const { dataID } = useParams()
     console.log(dataID)
@@ -13,8 +15,7 @@ const UpdateData = () => {
         }
         fetchData();
     }, [])
-    const { _id, img, name, descriptions } = update;
-    // console.log(_id, img, name, descriptions)
+    const { img, name, descriptions } = update;
 
     // handle update changes here  -
     const handleUpdate = (e) => {
@@ -30,8 +31,10 @@ const UpdateData = () => {
             .then(response => response.json())
             .then(result => {
                 if (result.modifiedCount > 0) {
-                    alert('Updated')
-                    setUpdate({})
+                    toast('Data Updated')
+                    setTimeout(() => {
+                        navigate("/manageData", { replace: true });
+                    }, 1500);
                 }
             })
 
@@ -43,8 +46,6 @@ const UpdateData = () => {
         const updatedName = e.target.value;
         const updated = { name: updatedName, img: update.img, descriptions: update.descriptions }
         setUpdate(updated)
-        // console.log(updatedUser)
-        // console.log(e.target.value)
     }
 
     const handleImagesChange = (e) => {
@@ -69,6 +70,17 @@ const UpdateData = () => {
                     <input type="text" onChange={handleDescriptionsChange} value={descriptions || ""} />
                     <input type="text" onChange={handleImagesChange} value={img || ""} />
                     <input type="submit" value="update" />
+                    <ToastContainer
+                        position="top-right"
+                        autoClose={500}
+                        hideProgressBar={false}
+                        newestOnTop={false}
+                        closeOnClick
+                        rtl={false}
+                        pauseOnFocusLoss
+                        draggable
+                        pauseOnHover
+                    />
                 </form>
             </div>
         </div>
