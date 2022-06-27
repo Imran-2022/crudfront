@@ -5,7 +5,7 @@ const ManageData = () => {
     const [manageData, setManageData] = useState([])
     // useEffect(() => {
     //     async function fetchData() {
-    //         const res = await fetch("https://mern-crud-operation.herokuapp.com/data");
+    //         const res = await fetch("https://mern-crud-mvc.herokuapp.com/api/data");
     //         const record = await res.json();
     //         setManageData(record)
     //     }
@@ -13,7 +13,7 @@ const ManageData = () => {
     // }, [])
 
     useEffect(() => {
-        const url = "https://mern-crud-operation.herokuapp.com/data"
+        const url = "https://mern-crud-mvc.herokuapp.com/api/data"
         fetch(url)
             .then(res => res.json())
             .then(data => {
@@ -27,7 +27,7 @@ const ManageData = () => {
         // const proced= window.confirm("are you sure, you want to delete ?");
 
         if (true) {
-            fetch(`https://mern-crud-operation.herokuapp.com/data/${id}`, {
+            fetch(`https://mern-crud-mvc.herokuapp.com/api/data/${id}`, {
                 method: 'DELETE',
             })
                 .then(res => res.json())// or res.text()) 

@@ -7,7 +7,7 @@ const DataDetails = () => {
     // console.log(id)
     useEffect(() => {
         async function fetchData() {
-            const res = await fetch(`https://mern-crud-operation.herokuapp.com/data/${id}`);
+            const res = await fetch(`https://mern-crud-mvc.herokuapp.com/api/data/${id}`);
             const record = await res.json();
             setDataD(record)
         }

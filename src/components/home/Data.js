@@ -5,7 +5,7 @@ const Data = () => {
     const [data, setData] = useState([])
     useEffect(() => {
         async function fetchData() {
-            const res = await fetch("https://mern-crud-operation.herokuapp.com/data");
+            const res = await fetch("https://mern-crud-mvc.herokuapp.com/api/data");
             const record = await res.json();
             setData(record.reverse())
         }
