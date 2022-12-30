@@ -9,7 +9,7 @@ const UpdateData = () => {
     console.log(dataID)
     useEffect(() => {
         async function fetchData() {
-            const res = await fetch(`https://mern-crud-mvc.herokuapp.com/api/data/${dataID}`);
+            const res = await fetch(`https://crud-backend-pl6i.onrender.com/api/data/${dataID}`);
             const record = await res.json();
             setUpdate(record)
         }
@@ -19,7 +19,7 @@ const UpdateData = () => {
 
     // handle update changes here  -
     const handleUpdate = (e) => {
-        const url = `https://mern-crud-mvc.herokuapp.com/api/data/${dataID}`;
+        const url = `https://crud-backend-pl6i.onrender.com/api/data/${dataID}`;
         fetch(url, {
             method: 'PUT',
             headers: {

@@ -11,7 +11,7 @@ const AddData = () => {
 
     const onSubmit = data => {
         console.log(data)
-        axios.post('https://mern-crud-mvc.herokuapp.com/api/data', data)
+        axios.post('https://crud-backend-pl6i.onrender.com/api/data', data)
             .then(res => {
                 if (res.data) {
                     toast("data added successfully !!!");

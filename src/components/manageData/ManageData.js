@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const ManageData = () => {
     const [manageData, setManageData] = useState([])
     useEffect(() => {
-        const url = "https://mern-crud-mvc.herokuapp.com/api/data"
+        const url = "https://crud-backend-pl6i.onrender.com/api/data"
         fetch(url)
             .then(res => res.json())
             .then(data => {
@@ -16,7 +16,7 @@ const ManageData = () => {
     const handleDelete = (id) => {
 
         if (true) {
-            fetch(`https://mern-crud-mvc.herokuapp.com/api/data/${id}`, {
+            fetch(`https://crud-backend-pl6i.onrender.com/api/data/${id}`, {
                 method: 'DELETE',
             })
                 .then(res => res.json())// or res.text()) 
@@ -44,7 +44,7 @@ const ManageData = () => {
                 </thead>
 
                 {
-                  manageData.length?  manageData.map((data, i) => {
+                    manageData.length ? manageData.map((data, i) => {
                         const { _id, img, name } = data
                         return (
                             <tbody key={_id}>
@@ -58,9 +58,9 @@ const ManageData = () => {
 
                             </tbody>
                         )
-                    }):<div >
-                    <p>loading data from backend , wait ...........</p>
-                </div>
+                    }) : <div >
+                        <p>loading data from backend , wait ...........</p>
+                    </div>
                     // }).reverse()
                 }
             </table>
